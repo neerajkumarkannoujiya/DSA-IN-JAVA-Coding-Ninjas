@@ -1,0 +1,93 @@
+Given an array A and an integer K, print all subsets of A which sum to K.
+Subsets are of length varying from 0 to n, that contain elements of the array. But the order of elements should remain same as in the input array.
+Note : The order of subsets are not important. Just print them in different lines.
+Input format :
+Line 1 : Size of input array
+Line 2 : Array elements separated by space
+Line 3 : K 
+Sample Input:
+9 
+5 12 3 17 1 18 15 3 17 
+6
+Sample Output:
+3 3
+5 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*****************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class solution {
+    
+    
+	public static void printSubsetsSumTok(int input[], int k) {
+		// Write your code here
+        printSubsets(input, 0, new int[0],k);
+		
+	}
+    
+    public static void printSubsets(int input[] ,int startIndex, int output[],int k) {
+        // Base case
+        if (startIndex == input.length){
+            for (int i: output){
+                System.out.print(i + " ");
+            }
+            System.out.println();
+            return;
+        }
+
+        // include element in subset
+        int[] newOutput = new int[output.length+1];
+        for (int i = 0; i < output.length; i++){
+            newOutput[i] = output[i];
+        }
+        newOutput[newOutput.length-1] = input[startIndex];
+        printSubsets(input, startIndex+1, newOutput);
+
+        // Don't include element
+        printSubsets(input, startIndex+1, output);
+       
+    }
+}
+
+    
+	
+    
+    
+	
+}
