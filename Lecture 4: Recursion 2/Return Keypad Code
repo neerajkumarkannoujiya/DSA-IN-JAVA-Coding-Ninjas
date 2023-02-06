@@ -1,0 +1,175 @@
+Given an integer n, using phone keypad find out all the possible strings that can be made using digits of input n.
+Return empty string for numbers 0 and 1.
+Note : 1. The order of strings are not important.
+2. Input and output has already been managed for you. You just have to populate the output array and return the count of elements populated in the output array.
+Input Format :
+Integer n
+Output Format :
+All possible strings in different lines
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+23
+Sample Output:
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*********************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public class solution {
+
+// 	// Return a string array that contains all the possible strings
+//     public static String[] keypad(int n,String output,String options[]){
+// //         if(n==0 || n==1){
+// //             return ;
+// //         }
+// //         int rem = n%10;
+        
+        
+// //             keypad(n/10,s1.charAt(i)+output,options);
+//         if(n == 0) {
+//             String s[] = {""};
+//             return s;
+//         }
+        
+//         String smallAns[] = keypad(n/10);
+//         char[] ch = helper(n % 10);
+//         String ans[] = new String[smallAns.length * ch.length];
+        
+//         int k = 0;
+//         for(int i=0; i<smallAns.length; i++) {
+//             for(int j=0; j<ch.length; j++) {
+//                 ans[k] = smallAns[i] + ch[j];
+//                 k++;
+//             }
+//         }
+// 		return ans;
+//     } 
+    
+// 	public static String[] keypad(int n){
+//         String output = "";
+//         String options[] ={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+//         String ans=keypad(n,output,options);
+//         return ans;
+// 		// Write your code here
+
+// 	}
+	
+// }
+
+
+
+
+
+public class solution {
+
+	// Return a string array that contains all the possible strings
+	private static char[] helper(int n) {
+        char ch[] = {' '};
+        switch(n-1) {
+            case 1:
+                char ch1[] = {'a', 'b', 'c'};
+                return ch1;
+        
+            case 2:
+                char ch2[] = {'d', 'e', 'f'};
+                return ch2;
+                
+            case 3:
+                char ch3[] = {'g', 'h', 'i'};
+                return ch3;
+               
+            case 4:
+                char ch4[] = {'j', 'k', 'l'};
+                return ch4;
+                
+            case 5:
+                char ch5[] = {'m', 'n', 'o'};
+                return ch5;
+                
+            case 6:
+                char ch6[] = {'p', 'q', 'r', 's'};
+                return ch6;
+                
+            case 7:
+                char ch7[] = {'t', 'u', 'v'};
+                return ch7;
+                
+            case 8:
+                char ch8[] = {'w', 'x', 'y', 'z'};
+                return ch8;
+                
+            default:
+                System.out.println("Not a valid number");
+                break;
+        }
+        return ch;
+    }
+    
+	public static String[] keypad(int n){
+		if(n == 0) {
+            String s[] = {""};
+            return s;
+        }
+        
+        String smallAns[] = keypad(n/10);
+        char[] ch = helper(n % 10);
+        String ans[] = new String[smallAns.length * ch.length];
+        
+        int k = 0;
+        for(int i=0; i<smallAns.length; i++) {
+            for(int j=0; j<ch.length; j++) {
+                ans[k] = smallAns[i] + ch[j];
+                k++;
+            }
+        }
+		return ans;
+	}
+	
+}
